@@ -1,0 +1,18 @@
+<app-header title="Login" [backButton]="true"></app-header>
+
+<ion-content>
+  <ion-list inset="true">
+    <ion-item>
+      <h1>Login</h1>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Email" label-placement="floating" placeholder="Enter email" name="email"
+        [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Password" label-placement="floating" placeholder="Enter password" name="password"
+        [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-button expand="block" style="margin-top: 1rem;" (click)="doLogin()">Login</ion-button>
+  </ion-list>
+</ion-content>

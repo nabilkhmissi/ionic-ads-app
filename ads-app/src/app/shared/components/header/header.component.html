@@ -1,0 +1,12 @@
+<ion-header id="main-content">
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="backButton">
+      <ion-back-button defaultHref></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ title }}</ion-title>
+    <ion-progress-bar type="indeterminate" *ngIf="loading$|async"></ion-progress-bar>
+  </ion-toolbar>
+</ion-header>
