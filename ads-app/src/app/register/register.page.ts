@@ -13,13 +13,14 @@ export class RegisterPage implements OnInit {
   email: string = ""
   password: string = ""
   name: string = ""
+  phone: string = ""
 
   ngOnInit() {
   }
 
 
   register() {
-    this._auth.register(this.email, this.password, this.name).subscribe()
+    this._auth.register(this.email, this.password, this.name, this.phone).subscribe()
   }
 
 }

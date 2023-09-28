@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdDetailsService } from './services/add-details.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { EMPTY, switchMap, tap } from 'rxjs';
 import { LoadingService } from '../shared/services/loading.service';
 import { Ad } from '../models/ad.model';
 
@@ -26,6 +25,7 @@ export class AdDetailsPage implements OnInit {
     if (id) {
       this._details.getAdById(id).subscribe(data => {
         this._loading.hideLoading();
+        console.log(data)
         this.ad = data
       })
     }

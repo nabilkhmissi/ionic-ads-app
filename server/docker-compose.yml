@@ -1,6 +1,7 @@
 version: '3'
 services:
   mongo:
+    container_name: mongo
     image: mongo
     restart: always
     ports:
@@ -21,4 +22,5 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: root
       ME_CONFIG_MONGODB_URL: mongodb://root:root@mongo:27017/
 volumes:
-    mongo:
+  mongo:
+

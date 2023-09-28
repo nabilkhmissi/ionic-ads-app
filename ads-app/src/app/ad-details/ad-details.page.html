@@ -9,7 +9,7 @@
         <ion-list [inset]="true">
             <ion-item lines="none">
                 <div class="ion-padding-horizontal">
-                    <ion-card-subtitle>{{ ad.category }}</ion-card-subtitle>
+                    <ion-card-subtitle>{{ ad.category?.title }}</ion-card-subtitle>
                     <ion-card-title>{{ad.title}}</ion-card-title>
                 </div>
             </ion-item>
@@ -22,11 +22,11 @@
         <ion-list [inset]="true">
             <ion-item lines="none">
                 <ion-icon name="person"></ion-icon>
-                <ion-label slot="end">{{ad.owner.name }} </ion-label>
+                <ion-label slot="end">{{ad.user?.name }} </ion-label>
             </ion-item>
             <ion-item>
                 <ion-icon name="call"></ion-icon>
-                <ion-label slot="end">{{ad.owner.phone }} </ion-label>
+                <ion-label slot="end">{{ad.user?.phone }} </ion-label>
             </ion-item>
         </ion-list>
 

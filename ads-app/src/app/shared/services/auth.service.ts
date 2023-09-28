@@ -40,8 +40,9 @@ export class AuthService {
         this._loading.showLoading()
         return this._http.post<AuthResponse>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
             tap(response => {
-                this.doLogin(response.data)
+                console.log(response)
                 this._loading.hideLoading()
+                this.doLogin(response.user)
                 this._router.navigate([''])
             }),
             catchError(error => {
@@ -52,9 +53,9 @@ export class AuthService {
         )
     }
 
-    register(email: string, password: string, name: string) {
+    register(email: string, password: string, name: string, phone: string) {
         this._loading.showLoading()
-        return this._http.post<AuthResponse>(`${this.baseUrl}/auth/register`, { email, password, name }).pipe(
+        return this._http.post<AuthResponse>(`${this.baseUrl}/auth/register`, { email, password, name, phone }).pipe(
             tap(response => {
                 console.log(response)
                 /* 

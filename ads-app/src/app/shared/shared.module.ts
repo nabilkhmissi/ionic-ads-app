@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoadingService } from './services/loading.service';
 import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
+import { AdsService } from './services/ads.service';
+import { SelectComponent } from './components/select/select.component';
+import { CategoryService } from './services/category.service';
+import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
 
 
 
@@ -15,7 +19,9 @@ import { AuthService } from './services/auth.service';
   declarations: [
     HeaderComponent,
     MenuComponent,
-    AdsCardComponent
+    AdsCardComponent,
+    SelectComponent,
+    AdsCardsComponent
   ],
   imports: [
     CommonModule,
@@ -25,12 +31,16 @@ import { AuthService } from './services/auth.service';
   exports: [
     HeaderComponent,
     MenuComponent,
-    AdsCardComponent
+    AdsCardComponent,
+    SelectComponent,
+    AdsCardsComponent
   ],
   providers: [
     LoadingService,
     AlertService,
     AuthService,
+    AdsService,
+    CategoryService
   ]
 })
 export class SharedModule { }

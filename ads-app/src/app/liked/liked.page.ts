@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AdsService } from '../shared/services/ads.service';
+import { AuthService } from '../shared/services/auth.service';
+import { User } from '../models/user.model';
+import { Ad } from '../models/ad.model';
 
 @Component({
   selector: 'app-liked',
@@ -7,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LikedPage implements OnInit {
 
-  constructor() { }
+  constructor(private _ads: AdsService,
+    private _auth: AuthService) {
+    this._auth.getUserFromLS()
+  }
+
+
 
   ngOnInit() {
   }

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LikedPageRoutingModule } from './liked-routing.module';
+import { AddAdPageRoutingModule } from './add-ad-routing.module';
 
-import { LikedPage } from './liked.page';
+import { AddAdPage } from './add-ad.page';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -15,9 +15,8 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     IonicModule,
     SharedModule,
-    LikedPageRoutingModule,
-    SharedModule
+    AddAdPageRoutingModule
   ],
-  declarations: [LikedPage]
+  declarations: [AddAdPage]
 })
-export class LikedPageModule { }
+export class AddAdPageModule { }

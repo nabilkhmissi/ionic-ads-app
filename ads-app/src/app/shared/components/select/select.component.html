@@ -1,0 +1,7 @@
+<ion-list>
+  <ion-item>
+    <ion-select aria-label="Categories" (ionChange)="handleSelect($event)">
+      <ion-select-option *ngFor="let item of items" [value]="item">{{item.title}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-list>

@@ -16,7 +16,7 @@ export class AdsService {
 
   getAllAds() {
     this._loading.showLoading()
-    return this._http.get<Response>(`${this.baseUrl}/ads/all`).pipe(
+    return this._http.get<Response>(`${this.baseUrl}/ads`).pipe(
       map(response => response.data),
       tap(() => this._loading.hideLoading())
     )

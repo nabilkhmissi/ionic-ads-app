@@ -9,7 +9,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { HomePage } from './home.page';
 import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from '../shared/components/header/header.component';
-import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
 import { AdsService } from './services/ads.service';
 
 @NgModule({
@@ -21,8 +20,7 @@ import { AdsService } from './services/ads.service';
     SharedModule
   ],
   declarations: [
-    HomePage,
-    AdsCardsComponent
+    HomePage
   ],
   providers: [
     AdsService

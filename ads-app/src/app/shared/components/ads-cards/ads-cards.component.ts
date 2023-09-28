@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AdsService } from '../../services/ads.service';
+import { Ad } from 'src/app/models/ad.model';
 
 @Component({
   selector: 'app-ads-cards',
@@ -8,10 +9,7 @@ import { AdsService } from '../../services/ads.service';
 })
 export class AdsCardsComponent implements OnInit {
 
-  constructor(private _ads: AdsService) { }
-
-  ads$ = this._ads.getAllAds();
-
+  @Input() ads: Ad[] = []
   ngOnInit() { }
 
 }

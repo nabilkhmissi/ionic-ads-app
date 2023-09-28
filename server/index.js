@@ -1,7 +1,13 @@
-const { ads, users, categories } = require("./data")
-const User = require("./models/user.model")
-
 require("./db/connect")
+const authRouter = require("./routes/auth")
+const adsRouter = require("./routes/ads")
+const categoriesRouter = require("./routes/categories")
+
+const { categories } = require("./data")
+
+const User = require("./models/user.model")
+const Category = require("./models/category.model")
+const Ad = require("./models/ad.model")
 
 const express = require("express")
 const cors = require("cors")
@@ -10,6 +16,42 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+
+app.use("/api/v1/auth", authRouter)
+app.use("/api/v1/ads", adsRouter)
+app.use("/api/v1/categories", categoriesRouter)
+
+
+async function initDB() {
+
+    /* categories.forEach(async (element) => {
+        console.log(element)
+        await new Category({
+            title: element.title
+        }).save()
+    }); */
+    /*   await Ad.deleteMany({})
+      await Category.deleteMany({})
+      await User.deleteMany({}) */
+    /*
+       new User({
+           name: "user",
+           email: "user@mail.com",
+           password: "user"
+       }).save();
+       new Category({
+           title: "old gadgets"
+       }).save()
+   
+       new Ad({
+           title: "iphone 13 pro max",
+           description: "en bonne etat",
+           prix: 1200
+       }).save(); */
+}
+
+/* initDB(); */
+/* 
 app.get("/api/v1/ads/all", (req, res) => {
     const query = req.query.search;
     setTimeout(() => {
@@ -104,25 +146,6 @@ app.get("/api/v1/categories", (req, res) => {
     }, 1000);
 })
 
-app.post("/api/v1/auth/register", (req, res) => {
-    const { name, email, password } = req.body;
-    setTimeout(() => {
-        const newUser = new User({
-            name: name,
-            email: email,
-            password: password
-        })
-        newUser.save()
-            .then((u) => res.send({
-                status: 200,
-                data: u
-            }))
-            .catch(error => res.status(400).send({ message: "error happened while saving user" }))
-
-    }, 1000);
-})
-
-
 app.post("/api/v1/auth/login", (req, res) => {
     setTimeout(() => {
         const { email, password } = req.body;
@@ -139,6 +162,7 @@ app.post("/api/v1/auth/login", (req, res) => {
         res.send({ status: 200, data: { email: authUser.email, name: authUser.name, id: authUser.id } })
     }, 1000);
 })
+ */
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log("app listening on port " + PORT))
