@@ -6,7 +6,7 @@
 
 
                     <ion-list id="inbox-list">
-                        <div *ngIf="authUser">
+                        <ion-menu-toggle *ngIf="authUser">
                             <ion-item lines="full" routerLink="/account">
                                 <ion-avatar slot="start">
                                     <img [alt]="authUser.name"
@@ -17,7 +17,7 @@
                                     <ion-note>{{authUser.name}}</ion-note>
                                 </div>
                             </ion-item>
-                        </div>
+                        </ion-menu-toggle>
 
                         <ion-menu-toggle>
                             <ion-item routerDirection="root" lines="none" detail="false" routerLink="">

@@ -8,7 +8,9 @@ import { AdsService } from './services/ads.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private _ads: AdsService) { }
+  constructor(private _ads: AdsService) { 
+    
+  }
 
   ads$ = this._ads.getAllAds();
   ngOnInit() {

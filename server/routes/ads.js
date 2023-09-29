@@ -27,10 +27,7 @@ router.get("/:id", async (req, res) => {
 router.get("/user/:id", async (req, res) => {
 
     const userId = req.params.id;
-
     const ads = await Ad.find({ user: userId });
-    console.log(ads)
-
     res.status(200).send({
         data: ads
     })

@@ -18,8 +18,6 @@ export class LoginPage implements OnInit {
   }
 
   doLogin() {
-    console.log(this.email)
-    console.log(this.password)
     this._auth.login(this.email, this.password).subscribe();
   }
 

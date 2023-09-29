@@ -24,12 +24,12 @@ app.use("/api/v1/categories", categoriesRouter)
 
 async function initDB() {
 
-    /* categories.forEach(async (element) => {
+    categories.forEach(async (element) => {
         console.log(element)
         await new Category({
             title: element.title
         }).save()
-    }); */
+    });
     /*   await Ad.deleteMany({})
       await Category.deleteMany({})
       await User.deleteMany({}) */
@@ -50,7 +50,7 @@ async function initDB() {
        }).save(); */
 }
 
-/* initDB(); */
+//initDB();
 /* 
 app.get("/api/v1/ads/all", (req, res) => {
     const query = req.query.search;

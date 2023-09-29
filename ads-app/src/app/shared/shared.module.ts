@@ -40,7 +40,7 @@ import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
     AlertService,
     AuthService,
     AdsService,
-    CategoryService
+    CategoryService,
   ]
 })
 export class SharedModule { }

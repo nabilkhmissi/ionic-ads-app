@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SharedModule } from './shared/shared.module';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -22,15 +23,18 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'account/my-ads',
-    loadChildren: () => import('./my-ads/my-ads.module').then(m => m.MyAdsPageModule)
+    loadChildren: () => import('./my-ads/my-ads.module').then(m => m.MyAdsPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'account/liked',
-    loadChildren: () => import('./liked/liked.module').then(m => m.LikedPageModule)
+    loadChildren: () => import('./liked/liked.module').then(m => m.LikedPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'register',
@@ -38,7 +42,8 @@ const routes: Routes = [
   },
   {
     path: 'add-ad',
-    loadChildren: () => import('./add-ad/add-ad.module').then( m => m.AddAdPageModule)
+    loadChildren: () => import('./add-ad/add-ad.module').then(m => m.AddAdPageModule),
+    canActivate: [AuthGuard]
   }
 ];
 

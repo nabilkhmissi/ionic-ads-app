@@ -4,6 +4,7 @@ import { AdsService } from '../shared/services/ads.service';
 import { User } from '../models/user.model';
 import { AuthService } from '../shared/services/auth.service';
 import { CategoryService } from '../shared/services/category.service';
+import { LoadingService } from '../shared/services/loading.service';
 
 @Component({
   selector: 'app-add-ad',
@@ -14,6 +15,7 @@ export class AddAdPage implements OnInit {
 
   constructor(private _ad: AdsService,
     private _auth: AuthService,
+    private _loading: LoadingService,
     private _cats: CategoryService) {
     this._auth.getUserFromLS()
   }
@@ -38,8 +40,6 @@ export class AddAdPage implements OnInit {
 
 
   addAd() {
-
-    console.log(this.user?._id)
     const ad = {
       title: this.title,
       description: this.description,
@@ -48,13 +48,10 @@ export class AddAdPage implements OnInit {
       price: this.price,
       userId: this.user?._id
     };
-    console.log(ad)
     this._ad.addAd(ad).subscribe();
   }
-
 
   handleCategoryChange(e: Category) {
     this.category = e
   }
-
 }

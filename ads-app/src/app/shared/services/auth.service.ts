@@ -1,11 +1,13 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, EMPTY, catchError, tap } from "rxjs";
+import { BehaviorSubject, EMPTY, catchError, delay, tap } from "rxjs";
 import { AuthResponse } from "src/app/models/auth-response.model";
 import { User } from "src/app/models/user.model";
 import { LoadingService } from "./loading.service";
 import { AlertService } from "./alert.service";
 import { Router } from "@angular/router";
+import { Response } from "src/app/models/response.model";
+import { Location } from "@angular/common";
 
 @Injectable()
 export class AuthService {
@@ -14,7 +16,8 @@ export class AuthService {
         private _http: HttpClient,
         private _loading: LoadingService,
         private _alert: AlertService,
-        private _router: Router
+        private _router: Router,
+        private _loacation: Location
     ) { }
 
     readonly baseUrl = "http://localhost:3000/api/v1"
@@ -40,14 +43,15 @@ export class AuthService {
         this._loading.showLoading()
         return this._http.post<AuthResponse>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
             tap(response => {
-                console.log(response)
                 this._loading.hideLoading()
                 this.doLogin(response.user)
-                this._router.navigate([''])
+                this._router.navigate(['']).then(() => {
+                    window.location.reload();
+                });
             }),
             catchError(error => {
                 this._loading.hideLoading()
-                this._alert.showNotification("Oops! Something goes wrong");
+                this._alert.showNotification(error.error.message);
                 return EMPTY
             })
         )
@@ -55,17 +59,14 @@ export class AuthService {
 
     register(email: string, password: string, name: string, phone: string) {
         this._loading.showLoading()
-        return this._http.post<AuthResponse>(`${this.baseUrl}/auth/register`, { email, password, name, phone }).pipe(
+        return this._http.post<Response>(`${this.baseUrl}/auth/register`, { email, password, name, phone }).pipe(
             tap(response => {
-                console.log(response)
-                /* 
-                this.doLogin(response.data)
-                this._loading.hideLoading()
-                this._router.navigate(['']) */
+                this._loading.hideLoading();
+                this._alert.showNotification(response.data)
             }),
             catchError(error => {
                 this._loading.hideLoading()
-                this._alert.showNotification("Oops! Something goes wrong");
+                this._alert.showNotification(error.error.message);
                 return EMPTY
             })
         )
