@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { LoadingService } from '../../services/loading.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-header',

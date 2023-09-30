@@ -3,27 +3,24 @@
 <ion-content>
   <ion-list inset="true">
     <ion-item lines="none">
-      <h1>Add new item</h1>
+      <h1>Add Ad</h1>
     </ion-item>
 
     <ion-item>
-      <ion-input label="Title" label-placement="floating" placeholder="Enter name" name="name"
-        [(ngModel)]="title"></ion-input>
+      <ion-input label="Title" label-placement="floating" name="name" [(ngModel)]="title"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-textarea label="Description" label-placement="floating" placeholder="Enter email" name="email"
+      <ion-textarea [autoGrow]="true" label="Description" label-placement="floating" name="description"
         [(ngModel)]="description"></ion-textarea>
     </ion-item>
     <ion-item>
-      <ion-input label="Price" label-placement="floating" placeholder="Enter password" name="password"
-        [(ngModel)]="price"></ion-input>
+      <ion-input label="Price" label-placement="floating" name="price" [(ngModel)]="price" type="number"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-input label="Image" label-placement="floating" placeholder="Enter password" name="password"
-        [(ngModel)]="image"></ion-input>
+      <ion-input label="Image" label-placement="floating" name="image" [(ngModel)]="image"></ion-input>
     </ion-item>
-    <ion-button expand="block" style="margin-top: 1rem;" (click)="addAd()">Register</ion-button>
-
     <app-select [items]="(categories$|async)" (category)="handleCategoryChange($event)"></app-select>
+    <ion-button expand="block" style="margin-top: 1rem;" (click)="addAd()">Add</ion-button>
+
   </ion-list>
 </ion-content>

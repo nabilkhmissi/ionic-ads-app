@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,7 @@ import { AuthService } from '../shared/services/auth.service';
 })
 export class RegisterPage implements OnInit {
 
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService, private _router: Router) { }
 
   email: string = ""
   password: string = ""
@@ -21,6 +22,11 @@ export class RegisterPage implements OnInit {
 
   register() {
     this._auth.register(this.email, this.password, this.name, this.phone).subscribe()
+  }
+
+
+  login() {
+    this._router.navigateByUrl("/login")
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdsService } from './services/ads.service';
+import { AuthService } from '../shared/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +9,12 @@ import { AdsService } from './services/ads.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private _ads: AdsService) { 
-    
+  constructor(private _ads: AdsService, private _auth: AuthService) {
+    _auth.getUserFromLS()
   }
 
   ads$ = this._ads.getAllAds();
+  authUser$ = this._auth.authenticatedUser$;
   ngOnInit() {
 
   }

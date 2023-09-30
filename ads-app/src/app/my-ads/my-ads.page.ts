@@ -23,7 +23,6 @@ export class MyAdsPage implements OnInit {
     this._auth.authenticatedUser$.subscribe(
       user => this.user = user
     )
-    console.log(this.user)
     if (this.user) {
       this._ads.getAdsByUserId(this.user?._id).subscribe(
         data => {

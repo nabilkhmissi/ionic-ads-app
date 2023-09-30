@@ -19,7 +19,7 @@
 
       <ion-buttons *ngIf="authUser$|async">
         <ion-button (click)="doLike()">
-          <ion-icon color="medium" name="heart" size="large"></ion-icon>
+          <ion-icon [color]="!liked ? 'medium' : 'danger'" name="heart" size="large"></ion-icon>
         </ion-button>
       </ion-buttons>
     </div>

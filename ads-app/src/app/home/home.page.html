@@ -1,5 +1,12 @@
 <app-header title="Home"></app-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+    <app-no-content *ngIf="(ads$|async)?.length===0"></app-no-content>
     <app-ads-cards [ads]="ads$|async"></app-ads-cards>
+    <ion-fab vertical="bottom" horizontal="end" style="margin: 0 1rem 1rem 0;" routerLink="/add-ad"
+        *ngIf="authUser$|async">
+        <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+        </ion-fab-button>
+    </ion-fab>
 </ion-content>

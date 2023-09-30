@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
         res.status(500).send({ message: "please fill all fiealds !" });
         return;
     }
-    const newUser = await new User({
+    await new User({
         name: name,
         email: email,
         password: password,
@@ -48,7 +48,7 @@ router.post("/register", async (req, res) => {
     }).save();
 
     res.status(200).send({
-        message: "user created successfully "
+        message: "User created successfully "
     })
 })
 module.exports = router

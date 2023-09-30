@@ -12,6 +12,8 @@ import { AdsService } from './services/ads.service';
 import { SelectComponent } from './components/select/select.component';
 import { CategoryService } from './services/category.service';
 import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
+import { UserService } from './services/user.service';
+import { NoContentComponent } from './components/no-content/no-content.component';
 
 
 
@@ -21,7 +23,8 @@ import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
     MenuComponent,
     AdsCardComponent,
     SelectComponent,
-    AdsCardsComponent
+    AdsCardsComponent,
+    NoContentComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,8 @@ import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
     MenuComponent,
     AdsCardComponent,
     SelectComponent,
-    AdsCardsComponent
+    AdsCardsComponent,
+    NoContentComponent
   ],
   providers: [
     LoadingService,
@@ -41,6 +45,7 @@ import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
     AuthService,
     AdsService,
     CategoryService,
+    UserService
   ]
 })
 export class SharedModule { }

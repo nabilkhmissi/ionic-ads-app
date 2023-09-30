@@ -3,11 +3,10 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, EMPTY, catchError, delay, tap } from "rxjs";
 import { AuthResponse } from "src/app/models/auth-response.model";
 import { User } from "src/app/models/user.model";
-import { LoadingService } from "./loading.service";
 import { AlertService } from "./alert.service";
 import { Router } from "@angular/router";
 import { Response } from "src/app/models/response.model";
-import { Location } from "@angular/common";
+import { LoadingService } from "./loading.service";
 
 @Injectable()
 export class AuthService {
@@ -16,9 +15,7 @@ export class AuthService {
         private _http: HttpClient,
         private _loading: LoadingService,
         private _alert: AlertService,
-        private _router: Router,
-        private _loacation: Location
-    ) { }
+        private _router: Router) { }
 
     readonly baseUrl = "http://localhost:3000/api/v1"
 
@@ -36,18 +33,19 @@ export class AuthService {
 
     logout() {
         this.clearAuthUser();
-        localStorage.removeItem("ads_user")
+        localStorage.removeItem("ads_user");
+        window.location.reload();
     }
 
     login(email: string, password: string) {
         this._loading.showLoading()
         return this._http.post<AuthResponse>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
             tap(response => {
-                this._loading.hideLoading()
                 this.doLogin(response.user)
                 this._router.navigate(['']).then(() => {
                     window.location.reload();
                 });
+                this._loading.hideLoading()
             }),
             catchError(error => {
                 this._loading.hideLoading()
@@ -59,10 +57,10 @@ export class AuthService {
 
     register(email: string, password: string, name: string, phone: string) {
         this._loading.showLoading()
-        return this._http.post<Response>(`${this.baseUrl}/auth/register`, { email, password, name, phone }).pipe(
+        return this._http.post<any>(`${this.baseUrl}/auth/register`, { email, password, name, phone }).pipe(
             tap(response => {
-                this._loading.hideLoading();
-                this._alert.showNotification(response.data)
+                this._loading.hideLoading()
+                this._alert.showNotification(response.message)
             }),
             catchError(error => {
                 this._loading.hideLoading()

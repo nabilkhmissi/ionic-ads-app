@@ -9,9 +9,9 @@ export class HttpInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
         const delayedRequest = req.clone();
-
-        // Return the delayed request as an observable
-        return next.handle(delayedRequest).pipe(delay(1000));
+        return next.handle(delayedRequest).pipe(
+            delay(1000)
+        );
     }
 
 }

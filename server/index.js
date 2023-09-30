@@ -2,6 +2,7 @@ require("./db/connect")
 const authRouter = require("./routes/auth")
 const adsRouter = require("./routes/ads")
 const categoriesRouter = require("./routes/categories")
+const userRouter = require("./routes/user")
 
 const { categories } = require("./data")
 
@@ -20,6 +21,7 @@ app.use(express.json())
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/ads", adsRouter)
 app.use("/api/v1/categories", categoriesRouter)
+app.use("/api/v1/user", userRouter)
 
 
 async function initDB() {

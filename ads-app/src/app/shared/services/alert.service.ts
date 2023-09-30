@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { BehaviorSubject, distinctUntilChanged, shareReplay } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AlertService {

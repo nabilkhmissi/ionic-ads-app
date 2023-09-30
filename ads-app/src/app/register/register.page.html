@@ -18,6 +18,11 @@
       <ion-input label="Password" label-placement="floating" placeholder="Enter password" name="password"
         [(ngModel)]="password"></ion-input>
     </ion-item>
+    <ion-item>
+      <ion-input label="Password" label-placement="floating" placeholder="Enter phone" name="phone"
+        [(ngModel)]="phone"></ion-input>
+    </ion-item>
     <ion-button expand="block" style="margin-top: 1rem;" (click)="register()">Register</ion-button>
+    <ion-button expand="block" style="margin-top: 1rem;" color="light" (click)="login()">Login</ion-button>
   </ion-list>
 </ion-content>

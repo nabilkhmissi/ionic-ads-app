@@ -9,7 +9,8 @@ import { Ad } from 'src/app/models/ad.model';
 })
 export class AdsCardsComponent implements OnInit {
 
-  @Input() ads: Ad[] = []
+  @Input() ads: Ad[] = [];
+  @Input() liked = false;
   ngOnInit() { }
 
 }

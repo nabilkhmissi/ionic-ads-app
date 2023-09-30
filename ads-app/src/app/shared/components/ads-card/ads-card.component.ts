@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { tap } from 'rxjs';
+import { EMPTY, switchMap, tap } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-ads-card',
@@ -12,11 +13,13 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class AdsCardComponent implements OnInit {
 
-  @Input() ad: any
+  @Input() ad: any;
+  @Input() liked = false;
   constructor(
     private _notification: AlertService,
     private _auth: AuthService,
-    private _router: Router) { }
+    private _router: Router,
+    private _user: UserService) { }
 
   authUser$ = this._auth.authenticatedUser$
 
@@ -25,11 +28,13 @@ export class AdsCardComponent implements OnInit {
 
   doLike() {
     this._auth.authenticatedUser$.pipe(
-      tap(user => {
+      switchMap(user => {
+        this.liked = !this.liked
         if (!user) {
-          this._notification.showNotification("You have to login first")
+          this._notification.showNotification("You have to login first");
+          return EMPTY;
         } else {
-          console.log("like post work")
+          return this._user.addToLikes(this.ad)
         }
       })
     ).subscribe()
