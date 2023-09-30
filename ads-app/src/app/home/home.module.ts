@@ -8,8 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { SharedModule } from '../shared/shared.module';
-import { HeaderComponent } from '../shared/components/header/header.component';
-import { AdsService } from './services/ads.service';
 
 @NgModule({
   imports: [
@@ -23,7 +21,6 @@ import { AdsService } from './services/ads.service';
     HomePage
   ],
   providers: [
-    AdsService
   ]
 })
 export class HomePageModule { }

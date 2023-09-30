@@ -34,8 +34,6 @@ export class AddAdPage implements OnInit {
     this._auth.authenticatedUser$.subscribe(
       auth => this.user = auth
     )
-
-    console.log(this.user)
   }
 
 

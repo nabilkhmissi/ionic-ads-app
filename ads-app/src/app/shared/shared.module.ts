@@ -14,6 +14,7 @@ import { CategoryService } from './services/category.service';
 import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
 import { UserService } from './services/user.service';
 import { NoContentComponent } from './components/no-content/no-content.component';
+import { ToastService } from './services/toast.service';
 
 
 
@@ -45,7 +46,8 @@ import { NoContentComponent } from './components/no-content/no-content.component
     AuthService,
     AdsService,
     CategoryService,
-    UserService
+    UserService,
+    ToastService
   ]
 })
 export class SharedModule { }

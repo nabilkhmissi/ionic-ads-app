@@ -6,7 +6,7 @@ import { Response } from "src/app/models/response.model";
 import { LoadingService } from "./loading.service";
 import { AuthService } from "./auth.service";
 import { AlertService } from "./alert.service";
-import { User } from "src/app/models/user.model";
+import { ToastService } from "./toast.service";
 
 @Injectable()
 export class UserService {
@@ -14,7 +14,8 @@ export class UserService {
     constructor(private _http: HttpClient,
         private _loading: LoadingService,
         private _auth: AuthService,
-        private _alert: AlertService) { }
+        private _alert: AlertService,
+        private _toast: ToastService) { }
 
     readonly baseUrl = "http://localhost:3000/api/v1/user";
 
@@ -68,7 +69,10 @@ export class UserService {
         this._loading.showLoading();
         return this._http.post<Response>(`${this.baseUrl}/${user._id}`, user).pipe(
             map(res => res.data),
-            tap(() => this._loading.hideLoading())
+            tap(() => {
+                this._toast.showToast("Your account updated successfully")
+                this._loading.hideLoading()
+            })
         )
     }
 }

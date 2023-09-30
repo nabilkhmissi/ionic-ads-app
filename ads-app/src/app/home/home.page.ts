@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdsService } from './services/ads.service';
 import { AuthService } from '../shared/services/auth.service';
 import { tap } from 'rxjs';
+import { AdsService } from '../shared/services/ads.service';
 
 @Component({
   selector: 'app-home',
@@ -11,12 +11,13 @@ import { tap } from 'rxjs';
 export class HomePage implements OnInit {
 
   empty = false;
+  keyword = "";
 
   constructor(private _ads: AdsService, private _auth: AuthService) {
     _auth.getUserFromLS()
   }
 
-  ads$ = this._ads.getAllAds().pipe(
+  ads$ = this._ads.filteredAds$.pipe(
     tap(res => {
       this.empty = res.length === 0 ? true : false
     })
@@ -24,5 +25,9 @@ export class HomePage implements OnInit {
   authUser$ = this._auth.authenticatedUser$;
   ngOnInit() {
 
+  }
+
+  handleSearch(e: any) {
+    this._ads.searchSubject.next(e.target.value)
   }
 }

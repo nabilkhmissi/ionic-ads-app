@@ -4,6 +4,23 @@ const User = require("../models/user.model")
 
 const router = express.Router();
 
+
+router.get("/search", async (req, res) => {
+
+    const { title } = req.query;
+
+    let ads = null;
+    if (title) {
+        ads = await Ad.find({ title: { $regex: title } });
+    } else {
+        ads = await Ad.find({});
+    }
+
+    res.status(200).send({
+        data: ads
+    })
+})
+
 router.get("", async (req, res) => {
 
     const ads = await Ad.find({}).populate('user category');
