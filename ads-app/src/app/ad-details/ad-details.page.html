@@ -3,9 +3,7 @@
 
 <ion-content class="ion-padding">
     <div *ngIf="ad">
-        <ion-list>
-            <ion-img [src]="ad.image" [alt]="ad.title"></ion-img>
-        </ion-list>
+            <ion-img [src]="ad.image ? ad.image :'../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
         <ion-list [inset]="true">
             <ion-item lines="none">
                 <div class="ion-padding-horizontal">

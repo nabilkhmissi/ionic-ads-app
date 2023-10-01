@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { tap } from 'rxjs';
 import { AdsService } from '../shared/services/ads.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomePage implements OnInit {
   empty = false;
   keyword = "";
 
-  constructor(private _ads: AdsService, private _auth: AuthService) {
+  constructor(private _ads: AdsService, private _auth: AuthService, private _router: Router) {
     _auth.getUserFromLS()
   }
 
@@ -29,5 +30,9 @@ export class HomePage implements OnInit {
 
   handleSearch(e: any) {
     this._ads.searchSubject.next(e.target.value)
+  }
+
+  goToAdd() {
+    this._router.navigateByUrl("/add-ad")
   }
 }

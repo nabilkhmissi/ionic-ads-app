@@ -1,5 +1,5 @@
 <ion-card>
-  <ion-img [src]="ad.image" [alt]="ad.title"></ion-img>
+  <ion-img [src]="ad.image ? ad.image :'../../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
 
   <ion-card-header (click)="goToDetails(ad._id)">
     <ion-card-title>{{ad.title}}</ion-card-title>
@@ -12,7 +12,7 @@
 
       <ion-item lines="none">
         <ion-avatar slot="start">
-          <img [src]="ad.image" [alt]="ad.title">
+          <img src="../../../../assets/user.jpeg" [alt]="ad.title">
         </ion-avatar>
         <ion-label>{{ad.user.name}}</ion-label>
       </ion-item>

@@ -1,9 +1,5 @@
 <ion-grid>
-  <ion-row>
-    <ion-col size-sm="10" offset-sm="2" size-md="6" offset-md="3">
-      <ion-list *ngIf="ads as ads">
-        <app-ads-card [liked]="liked" [ad]="ad" *ngFor="let ad of ads"></app-ads-card>
-      </ion-list>
-    </ion-col>
-  </ion-row>
+  <ion-list *ngIf="ads as ads">
+    <app-ads-card [liked]="liked" [ad]="ad" *ngFor="let ad of ads"></app-ads-card>
+  </ion-list>
 </ion-grid>

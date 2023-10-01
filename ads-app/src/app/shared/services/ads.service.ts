@@ -1,9 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, combineLatest, map, of, switchMap, tap } from "rxjs";
+import { BehaviorSubject, combineLatest, map, switchMap, tap } from "rxjs";
 import { Response } from "src/app/models/response.model";
 import { LoadingService } from "./loading.service";
-import { AlertService } from "./alert.service";
 import { ToastService } from "./toast.service";
 
 @Injectable()
@@ -11,7 +10,6 @@ export class AdsService {
 
     constructor(private _http: HttpClient,
         private _laoding: LoadingService,
-        private _alert: AlertService,
         private _toast: ToastService) { }
 
     readonly baseUrl = "http://localhost:3000/api/v1/ads";
