@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EMPTY, switchMap, tap } from 'rxjs';
-import { User } from 'src/app/models/user.model';
 import { AlertService } from 'src/app/shared/services/alert.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { UserService } from '../../services/user.service';

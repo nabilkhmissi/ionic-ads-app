@@ -1,32 +1,52 @@
-<app-menu contentId="main-content" side="end"></app-menu>
-<app-header title="Ad details" [backButton]="true"></app-header>
+<!-- <app-menu contentId="main-content" side="end"></app-menu> -->
+<!-- <app-header title="Ad details" [backButton]="true"></app-header> -->
 
-<ion-content class="ion-padding">
-    <div *ngIf="ad">
+<ion-content>
+    <div style="background-color: blueviolet;">
+        <div class="header">
+            <ion-back-button text="" icon="arrow-back-outline" color="light" defaultHref></ion-back-button>
+            <ion-icon name="heart-outline" size="large" (click)="doLike()"></ion-icon>
+        </div>
+        <div *ngIf="ad" class="main-content">
             <ion-img [src]="ad.image ? ad.image :'../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
-        <ion-list [inset]="true">
-            <ion-item lines="none">
-                <div class="ion-padding-horizontal">
-                    <ion-card-subtitle>{{ ad.category?.title }}</ion-card-subtitle>
-                    <ion-card-title>{{ad.title}}</ion-card-title>
-                </div>
-            </ion-item>
-        </ion-list>
-        <ion-list [inset]="true">
-            <ion-item style="padding: 10px 0;">
-                <ion-text>{{ad.description}}</ion-text>
-            </ion-item>
-        </ion-list>
-        <ion-list [inset]="true">
-            <ion-item lines="none">
-                <ion-icon name="person"></ion-icon>
-                <ion-label slot="end">{{ad.user?.name }} </ion-label>
-            </ion-item>
-            <ion-item>
-                <ion-icon name="call"></ion-icon>
-                <ion-label slot="end">{{ad.user?.phone }} </ion-label>
-            </ion-item>
-        </ion-list>
+            <div style="padding: 0 1rem;">
+                <ion-list>
+                    <div class="details-top">
+                        <div class="category-span">
+                            {{ ad.category?.title }}
+                        </div>
+                        <div class="price-span">
+                            1400 TND
+                        </div>
+                    </div>
+                    <div>
+                        <h1>{{ ad.title }}</h1>
+                        <p>Published : 1/11/2023</p>
+                    </div>
+                </ion-list>
+                <ion-list>
+                    <h1>Description</h1>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempore perferendis inventore
+                        doloremque ab
+                        libero voluptate doloribus eveniet nam tempora iure explicabo dolor alias odit, omnis iste
+                        placeat
+                        deserunt exercitationem earum!</p>
+                </ion-list>
+                <ion-list>
+                    <h1>Seller details</h1>
 
+                    <ion-item lines="none">
+                        <ion-icon name="person"></ion-icon>
+                        <ion-label slot="end">{{ad.user?.name }} </ion-label>
+                    </ion-item>
+                    <ion-item>
+                        <ion-icon name="call"></ion-icon>
+                        <ion-label slot="end">{{ad.user?.phone }} </ion-label>
+                    </ion-item>
+                </ion-list>
+            </div>
+
+
+        </div>
     </div>
 </ion-content>

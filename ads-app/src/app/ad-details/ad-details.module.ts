@@ -8,7 +8,6 @@ import { AdDetailsPageRoutingModule } from './ad-details-routing.module';
 
 import { AdDetailsPage } from './ad-details.page';
 import { SharedModule } from '../shared/shared.module';
-import { AdDetailsService } from './services/add-details.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -20,9 +19,6 @@ import { HttpClientModule } from '@angular/common/http';
     AdDetailsPageRoutingModule,
     HttpClientModule
   ],
-  declarations: [AdDetailsPage],
-  providers: [
-    AdDetailsService
-  ]
+  declarations: [AdDetailsPage]
 })
 export class AdDetailsPageModule { }

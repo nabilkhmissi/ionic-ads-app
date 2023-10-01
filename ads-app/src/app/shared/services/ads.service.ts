@@ -21,6 +21,12 @@ export class AdsService {
 
     allAds$ = this.getAllAds();
 
+    getAdById(id: string) {
+        return this._http.get<Response>(`${this.baseUrl}/${id}`).pipe(
+            map(response => response.data),
+        )
+    }
+
     filteredAds$ = combineLatest(([this.allAds$, this.search$])).pipe(
         switchMap(([ads, search]) => {
             if (!search || search?.length === 0) {

@@ -1,0 +1,34 @@
+ion-card {
+    margin: 0;
+
+    ion-card-header {
+        padding: 1rem;
+    }
+
+    ion-card-content {
+        padding: 0 1rem;
+    }
+
+    .card-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.5rem;
+        background-color: rgb(255, 255, 255);
+        border-radius: 50px;
+
+        ion-icon {
+            font-size: 25px;
+            color: rgb(71, 71, 71);
+            margin: 0;
+            vertical-align: middle;
+        }
+    }
+
+    .location {
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem;
+        align-items: center;
+    }
+}

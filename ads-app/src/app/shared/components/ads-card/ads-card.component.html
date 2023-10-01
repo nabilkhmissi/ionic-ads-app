@@ -1,27 +1,17 @@
-<ion-card>
+<ion-card style="position: relative;">
   <ion-img [src]="ad.image ? ad.image :'../../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
 
   <ion-card-header (click)="goToDetails(ad._id)">
-    <ion-card-title>{{ad.title}}</ion-card-title>
-    <ion-card-subtitle>{{ ad.category.title }}</ion-card-subtitle>
+    <ion-card-title style="font-size: 20px;">{{ad.title}}</ion-card-title>
   </ion-card-header>
-
   <ion-card-content>
-    {{ad.description}}
-    <div style="display: flex;justify-content: space-between;">
-
-      <ion-item lines="none">
-        <ion-avatar slot="start">
-          <img src="../../../../assets/user.jpeg" [alt]="ad.title">
-        </ion-avatar>
-        <ion-label>{{ad.user.name}}</ion-label>
-      </ion-item>
-
-      <ion-buttons *ngIf="authUser$|async">
-        <ion-button (click)="doLike()">
-          <ion-icon [color]="!liked ? 'medium' : 'danger'" name="heart" size="large"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    </div>
+    1400 TND
   </ion-card-content>
+  <div (click)=" doLike()" *ngIf="authUser$|async" class="card-btn">
+    <ion-icon name="heart-outline"></ion-icon>
+  </div>
+  <div class="location">
+    <ion-icon name="location-outline"></ion-icon>
+    Tunis, Tunisia
+  </div>
 </ion-card>
