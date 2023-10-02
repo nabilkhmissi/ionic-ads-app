@@ -1,5 +1,7 @@
-<app-header title="Liked" [backButton]="true"></app-header>
+<ion-content>
+    <app-header-back title="My Favorites"></app-header-back>
+    <div class="page-wrapper">
+        <app-ads-cards [ads]="likes" [liked]="true"></app-ads-cards>
+    </div>
 
-<ion-content [fullscreen]="true">
-    <app-ads-cards [ads]="likes" [liked]="true"></app-ads-cards>
 </ion-content>

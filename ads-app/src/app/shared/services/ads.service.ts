@@ -44,7 +44,7 @@ export class AdsService {
             tap((res) => {
                 this._toast.showToast("Ad added successfully")
                 this._laoding.hideLoading();
-                this._router.navigate(['/login'])
+                this._router.navigate(['/home'])
             })
         )
     }

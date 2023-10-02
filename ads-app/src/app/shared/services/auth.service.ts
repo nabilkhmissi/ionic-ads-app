@@ -43,9 +43,10 @@ export class AuthService {
         return this._http.post<AuthResponse>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
             tap(response => {
                 this.doLogin(response.user)
-                this._router.navigate([''])
+                this._router.navigate(['']).then(
+                    () => window.location.reload()
+                )
                 this._loading.hideLoading();
-                window.location.reload();
             }),
             catchError(error => {
                 this._loading.hideLoading();
