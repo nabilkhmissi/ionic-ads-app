@@ -11,7 +11,6 @@ import { AuthService } from '../../services/auth.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    private _loading: LoadingService,
     private _router: Router,
     private _auth: AuthService
   ) { }
@@ -20,7 +19,6 @@ export class HeaderComponent implements OnInit {
   @Input() backButton = false;
 
   authUser$ = this._auth.authenticatedUser$;
-  loading$ = this._loading.loading$;
 
   ngOnInit() {
 

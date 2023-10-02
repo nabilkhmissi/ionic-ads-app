@@ -44,6 +44,10 @@ const routes: Routes = [
     path: 'add-ad',
     loadChildren: () => import('./pages/add-ad/add-ad.module').then(m => m.AddAdPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'categories',
+    loadChildren: () => import('./pages/categories/categories.module').then( m => m.CategoriesPageModule)
   }
 ];
 

@@ -29,6 +29,8 @@ export class AdDetailsPage implements OnInit {
 
   ad!: Ad;
   liked = false;
+
+  loading$ = this._loading.loading$;
   ngOnInit() {
     this._loading.showLoading();
     const id = this._activatedRoute.snapshot.paramMap.get("id")

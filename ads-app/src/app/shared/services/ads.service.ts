@@ -4,12 +4,14 @@ import { BehaviorSubject, combineLatest, map, switchMap, tap } from "rxjs";
 import { Response } from "src/app/models/response.model";
 import { LoadingService } from "./loading.service";
 import { ToastService } from "./toast.service";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AdsService {
 
     constructor(private _http: HttpClient,
         private _laoding: LoadingService,
+        private _router: Router,
         private _toast: ToastService) { }
 
     readonly baseUrl = "http://localhost:3000/api/v1/ads";
@@ -41,7 +43,8 @@ export class AdsService {
         return this._http.post<any>(`${this.baseUrl}`, ad).pipe(
             tap((res) => {
                 this._toast.showToast("Ad added successfully")
-                this._laoding.hideLoading()
+                this._laoding.hideLoading();
+                this._router.navigate(['/login'])
             })
         )
     }

@@ -1,26 +1,28 @@
-<app-header title="Add ad" [backButton]="true"></app-header>
-
+<app-header-back title="Details"></app-header-back>
 <ion-content>
-  <ion-list inset="true">
-    <ion-item lines="none">
-      <h1>Add Ad</h1>
-    </ion-item>
+  <div class="page-wrapper">
 
-    <ion-item>
-      <ion-input label="Title" label-placement="floating" name="name" [(ngModel)]="title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-textarea [autoGrow]="true" label="Description" label-placement="floating" name="description"
-        [(ngModel)]="description"></ion-textarea>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Price" label-placement="floating" name="price" [(ngModel)]="price" type="number"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input label="Image" label-placement="floating" name="image" [(ngModel)]="image"></ion-input>
-    </ion-item>
-    <app-select [items]="(categories$|async)" (category)="handleCategoryChange($event)"></app-select>
-    <ion-button expand="block" style="margin-top: 1rem;" (click)="addAd()">Add</ion-button>
 
-  </ion-list>
+    <ion-list inset="true">
+      <ion-item lines="none">
+        <h1>Add Ad</h1>
+      </ion-item>
+
+      <ion-item>
+        <ion-input label="Title" label-placement="floating" name="name" [(ngModel)]="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-textarea [autoGrow]="true" label="Description" label-placement="floating" name="description"
+          [(ngModel)]="description"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Price" label-placement="floating" name="price" [(ngModel)]="price" type="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Image" label-placement="floating" name="image" [(ngModel)]="image"></ion-input>
+      </ion-item>
+      <app-select [items]="(categories$|async)" (category)="handleCategoryChange($event)"></app-select>
+      <ion-button expand="block" style="margin-top: 1rem;" (click)="addAd()">Add</ion-button>
+    </ion-list>
+  </div>
 </ion-content>

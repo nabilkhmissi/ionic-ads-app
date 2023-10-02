@@ -16,15 +16,11 @@ export class MenuComponent implements OnInit {
   ) { }
 
   user: User | null = null;
-  menu = [
-    { page: "Home", path: "", ion: "home-outline" },
-    { page: "My Ads", path: "/account/my-ads", ion: "menu-outline" },
-    { page: "Liked", path: "/account/liked", ion: "heart-outline" }
-  ]
 
   ngOnInit() {
     this._auth.authenticatedUser$.subscribe(
       user => this.user = user
+
     )
   }
 

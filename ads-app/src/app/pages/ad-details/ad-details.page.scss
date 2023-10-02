@@ -6,7 +6,7 @@
 }
 
 .category-span {
-    background-color: blueviolet;
+    background-color: #9089E9;
     color: white;
     border-radius: 10px;
     padding: 0.5rem;
@@ -23,7 +23,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: blueviolet;
+    background-color: #9089E9;
 }
 
 .header ion-icon {
@@ -34,4 +34,9 @@
     border-radius: 2rem 2rem 0 0;
     background-color: white;
     overflow: hidden;
+    min-height: 100%;
+}
+
+ion-content {
+    --background: #9089E9;
 }

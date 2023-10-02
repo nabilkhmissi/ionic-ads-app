@@ -15,6 +15,8 @@ import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
 import { UserService } from './services/user.service';
 import { NoContentComponent } from './components/no-content/no-content.component';
 import { ToastService } from './services/toast.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { HeaderBackComponent } from './components/header-back/header-back.component';
 
 
 
@@ -25,7 +27,9 @@ import { ToastService } from './services/toast.service';
     AdsCardComponent,
     SelectComponent,
     AdsCardsComponent,
-    NoContentComponent
+    NoContentComponent,
+    SpinnerComponent,
+    HeaderBackComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,9 @@ import { ToastService } from './services/toast.service';
     AdsCardComponent,
     SelectComponent,
     AdsCardsComponent,
-    NoContentComponent
+    NoContentComponent,
+    SpinnerComponent,
+    HeaderBackComponent
   ],
   providers: [
     LoadingService,

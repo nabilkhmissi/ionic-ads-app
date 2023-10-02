@@ -1,13 +1,8 @@
-<!-- <app-menu contentId="main-content" side="end"></app-menu> -->
-<!-- <app-header title="Ad details" [backButton]="true"></app-header> -->
-
 <ion-content>
-    <div style="background-color: blueviolet;">
-        <div class="header">
-            <ion-back-button text="" icon="arrow-back-outline" color="light" defaultHref></ion-back-button>
-            <ion-icon name="heart-outline" size="large" (click)="doLike()"></ion-icon>
-        </div>
-        <div *ngIf="ad" class="main-content">
+    <app-header-back title="Details"></app-header-back>
+    <div class="main-content">
+        <app-spinner *ngIf="loading$ | async"></app-spinner>
+        <ng-container *ngIf="ad">
             <ion-img [src]="ad.image ? ad.image :'../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
             <div style="padding: 0 1rem;">
                 <ion-list>
@@ -45,8 +40,6 @@
                     </ion-item>
                 </ion-list>
             </div>
-
-
-        </div>
+        </ng-container>
     </div>
 </ion-content>

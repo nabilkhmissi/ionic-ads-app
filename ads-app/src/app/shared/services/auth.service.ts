@@ -35,7 +35,7 @@ export class AuthService {
     logout() {
         this.clearAuthUser();
         localStorage.removeItem("ads_user");
-        /*  window.location.reload(); */
+        window.location.reload();
     }
 
     login(email: string, password: string) {
@@ -44,7 +44,8 @@ export class AuthService {
             tap(response => {
                 this.doLogin(response.user)
                 this._router.navigate([''])
-                this._loading.hideLoading()
+                this._loading.hideLoading();
+                window.location.reload();
             }),
             catchError(error => {
                 this._loading.hideLoading();

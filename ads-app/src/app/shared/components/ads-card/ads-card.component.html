@@ -1,17 +1,20 @@
-<ion-card style="position: relative;">
+<ion-card style="position: relative;height: 100%;">
   <ion-img [src]="ad.image ? ad.image :'../../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
-
-  <ion-card-header (click)="goToDetails(ad._id)">
-    <ion-card-title style="font-size: 20px;">{{ad.title}}</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    1400 TND
-  </ion-card-content>
-  <div (click)=" doLike()" *ngIf="authUser$|async" class="card-btn">
-    <ion-icon name="heart-outline"></ion-icon>
-  </div>
-  <div class="location">
-    <ion-icon name="location-outline"></ion-icon>
-    Tunis, Tunisia
+  <div style="display: flex;flex-direction: column;justify-content: space-between;">
+    <div>
+      <ion-card-header (click)="goToDetails(ad._id)">
+        <ion-card-title style="font-size: 18px;">{{ad.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        1400 TND
+      </ion-card-content>
+      <div (click)=" doLike()" *ngIf="authUser$|async" class="card-btn">
+        <ion-icon name="heart-outline"></ion-icon>
+      </div>
+    </div>
+    <div class="location">
+      <ion-icon name="location-outline"></ion-icon>
+      Tunis, Tunisia
+    </div>
   </div>
 </ion-card>

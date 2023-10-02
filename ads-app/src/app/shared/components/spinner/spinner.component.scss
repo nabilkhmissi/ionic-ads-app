@@ -1,0 +1,12 @@
+.spinner-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+ion-spinner {
+    width: 60px;
+    height: 60px;
+    color: #9089E9;
+}
