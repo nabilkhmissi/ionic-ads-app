@@ -7,5 +7,3 @@ A mobile app for ads built with ionic with angular ang express js for the backen
 ![Capture d’écran du 2023-10-02 21-13-41](https://github.com/nabilkhmissi/ionic-ads-app/assets/63462471/0902a08d-e69d-41d0-8b10-3ee00a9c1f2f)
 ![Capture d’écran du 2023-10-02 21-13-14](https://github.com/nabilkhmissi/ionic-ads-app/assets/63462471/964c6b28-5fa1-491b-a874-cba4f79926a9)
 ![Capture d’écran du 2023-10-02 21-13-07](https://github.com/nabilkhmissi/ionic-ads-app/assets/63462471/a4f52287-0854-449b-9f88-dab50c76a097)
-![Capture d’écran du 2023-09-24 16-14-23](https://github.com/nabilkhmissi/ionic-ads-app/assets/63462471/f4d9ec88-5ce2-49ca-ad1e-e4bd10828cf2)
-![Capture d’écran du 2023-09-24 15-05-46](https://github.com/nabilkhmissi/ionic-ads-app/assets/63462471/3214c773-ae84-4793-8a89-bd1b49be34b9)
