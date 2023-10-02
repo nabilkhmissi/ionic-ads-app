@@ -1,10 +1,78 @@
+<!-- <ion-menu contentId="main-content" type="overlay">
+  <ion-content>
+    <div style="display: flex;flex-direction: column;justify-content: space-between;height: 100%;">
+      <ion-list id="inbox-list">
+        <ion-menu-toggle *ngIf="authUser$ | async as user">
+          <ion-item lines="full" routerLink="/account">
+            <ion-avatar slot="start">
+              <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+            </ion-avatar>
+            <div>
+              <ion-list-header>{{user.name}}</ion-list-header>
+              <ion-note>{{user.name}}</ion-note>
+            </div>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" lines="none" detail="false" routerLink="">
+            <ion-icon aria-hidden="true" slot="start" name="home-outline"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle *ngIf="authUser$ | async">
+          <ion-item routerDirection="root" lines="none" detail="false" routerLink="/account/my-ads">
+            <ion-icon aria-hidden="true" slot="start" name="grid-outline"></ion-icon>
+            <ion-label>My Ads</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" lines="none" detail="false" routerLink="/add-ad">
+            <ion-icon aria-hidden="true" slot="start" name="add-outline"></ion-icon>
+            <ion-label>Add Item</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle *ngIf="authUser$ | async">
+          <ion-item routerDirection="root" lines="none" detail="false" routerLink="/account/liked">
+            <ion-icon aria-hidden="true" slot="start" name="heart-outline"></ion-icon>
+            <ion-label>Liked</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" lines="none" detail="false" routerLinkActive="selected" routerLink="/login"
+            *ngIf="(authUser$ | async) === null">
+            <ion-icon aria-hidden="true" slot="start" name="enter-outline"></ion-icon>
+            <ion-label>Login</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerDirection="root" lines="none" detail="false" routerLinkActive="selected"
+            routerLink="/register" *ngIf="(authUser$|async) === null">
+            <ion-icon aria-hidden="true" slot="start" name="person-outline"></ion-icon>
+            <ion-label>register</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      <ion-list>
+        <ion-menu-toggle (click)="logout()" *ngIf="authUser$|async">
+          <ion-item routerDirection="root" lines="none" detail="false">
+            <ion-icon aria-hidden="true" slot="start" name="exit-outline"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </div>
+
+  </ion-content>
+</ion-menu> -->
+
 <ion-header id="main-content">
   <ion-toolbar>
     <ion-buttons slot="start" *ngIf="backButton">
       <ion-back-button defaultHref></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button menu="main-menu"></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ title }}</ion-title>
     <ion-progress-bar type="indeterminate" *ngIf="loading$|async"></ion-progress-bar>

@@ -14,7 +14,9 @@ export class HomePage implements OnInit {
   empty = false;
   keyword = "";
 
-  constructor(private _ads: AdsService, private _auth: AuthService, private _router: Router) {
+  constructor(private _ads: AdsService,
+    private _auth: AuthService,
+    private _router: Router) {
     _auth.getUserFromLS()
   }
 

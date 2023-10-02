@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return this._auth.authenticatedUser$.pipe(
       switchMap(user => {
+        console.log(user)
         if (user) return of(true)
         this._router.navigate(['/login'], { queryParams: { message: "login required" } })
         return of(false)

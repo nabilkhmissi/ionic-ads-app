@@ -47,7 +47,7 @@ import { ToastService } from './services/toast.service';
     AdsService,
     CategoryService,
     UserService,
-    ToastService
+    ToastService,
   ]
 })
 export class SharedModule { }

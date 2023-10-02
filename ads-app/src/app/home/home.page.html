@@ -1,11 +1,9 @@
 <app-header title="Home"></app-header>
 
 <ion-content>
-    <!-- <app-no-content *ngIf="empty"></app-no-content> -->
     <ion-row>
         <ion-col size-sm="10" offset-sm="2" size-md="6" offset-md="3">
-            <ion-searchbar [debounce]="500" animated="true" placeholder="search..."
-                (input)="handleSearch($event)"></ion-searchbar>
+            <ion-searchbar animated="true" placeholder="search..." (input)="handleSearch($event)"></ion-searchbar>
             <app-ads-cards [ads]="ads$|async"></app-ads-cards>
         </ion-col>
     </ion-row>

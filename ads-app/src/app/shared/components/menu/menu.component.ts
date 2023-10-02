@@ -15,17 +15,17 @@ export class MenuComponent implements OnInit {
     private _auth: AuthService
   ) { }
 
-  authUser: User | null = null
-
-  user$ = this._auth.authenticatedUser$;
-
+  user: User | null = null;
   menu = [
-    { page: "Home", path: "", ion: "home" },
-    { page: "My Ads", path: "/account/my-ads", ion: "menu" },
-    { page: "Liked", path: "/account/liked", ion: "heart" }
+    { page: "Home", path: "", ion: "home-outline" },
+    { page: "My Ads", path: "/account/my-ads", ion: "menu-outline" },
+    { page: "Liked", path: "/account/liked", ion: "heart-outline" }
   ]
 
   ngOnInit() {
+    this._auth.authenticatedUser$.subscribe(
+      user => this.user = user
+    )
   }
 
   navigate(path: string) {
@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
   }
 
   goToProfile() {
-    this._router.navigate(["/profile"])
+    this._router.navigate(["/account"])
   }
 
   logout() {

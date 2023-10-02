@@ -1,12 +1,12 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, EMPTY, catchError, delay, tap } from "rxjs";
+import { BehaviorSubject, EMPTY, catchError, tap } from "rxjs";
 import { AuthResponse } from "src/app/models/auth-response.model";
 import { User } from "src/app/models/user.model";
 import { AlertService } from "./alert.service";
 import { Router } from "@angular/router";
-import { Response } from "src/app/models/response.model";
 import { LoadingService } from "./loading.service";
+import { ToastService } from "./toast.service";
 
 @Injectable()
 export class AuthService {
@@ -15,7 +15,8 @@ export class AuthService {
         private _http: HttpClient,
         private _loading: LoadingService,
         private _alert: AlertService,
-        private _router: Router) { }
+        private _router: Router,
+        private _toast: ToastService) { }
 
     readonly baseUrl = "http://localhost:3000/api/v1"
 
@@ -34,7 +35,7 @@ export class AuthService {
     logout() {
         this.clearAuthUser();
         localStorage.removeItem("ads_user");
-        window.location.reload();
+        /*  window.location.reload(); */
     }
 
     login(email: string, password: string) {
@@ -42,13 +43,11 @@ export class AuthService {
         return this._http.post<AuthResponse>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
             tap(response => {
                 this.doLogin(response.user)
-                this._router.navigate(['']).then(() => {
-                    window.location.reload();
-                });
+                this._router.navigate([''])
                 this._loading.hideLoading()
             }),
             catchError(error => {
-                this._loading.hideLoading()
+                this._loading.hideLoading();
                 this._alert.showNotification(error.error.message);
                 return EMPTY
             })
@@ -60,7 +59,8 @@ export class AuthService {
         return this._http.post<any>(`${this.baseUrl}/auth/register`, { email, password, name, phone }).pipe(
             tap(response => {
                 this._loading.hideLoading()
-                this._alert.showNotification(response.message)
+                this._toast.showToast(response.message);
+                this._router.navigate(['/login'])
             }),
             catchError(error => {
                 this._loading.hideLoading()

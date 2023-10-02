@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AuthService } from './shared/services/auth.service';
-import { User } from './models/user.model';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -11,15 +10,15 @@ export class AppComponent implements OnInit {
     _auth.getUserFromLS()
   }
 
-  authUser: User | null = null
+  authUser$ = this._auth.authenticatedUser$
 
 
-  ngOnInit(): void {
-    this._auth.authenticatedUser$.subscribe(
-      data => this.authUser = data
-    )
-  }
-  logout() { 
+  ngOnInit(): void { }
+  logout() {
     this._auth.logout()
+  }
+
+  handleClick() {
+    console.log("aa")
   }
 }
