@@ -4,19 +4,20 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePageRoutingModule } from './profile-routing.module';
+import { LikedPageRoutingModule } from './liked-routing.module';
 
-import { ProfilePage } from './profile.page';
-import { SharedModule } from '../shared/shared.module';
+import { LikedPage } from './liked.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule,
+    SharedModule,
+    LikedPageRoutingModule,
     SharedModule
   ],
-  declarations: [ProfilePage]
+  declarations: [LikedPage]
 })
-export class ProfilePageModule { }
+export class LikedPageModule { }

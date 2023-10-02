@@ -4,10 +4,10 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegisterPageRoutingModule } from './register-routing.module';
+import { AddAdPageRoutingModule } from './add-ad-routing.module';
 
-import { RegisterPage } from './register.page';
-import { SharedModule } from '../shared/shared.module';
+import { AddAdPage } from './add-ad.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -15,8 +15,8 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     IonicModule,
     SharedModule,
-    RegisterPageRoutingModule
+    AddAdPageRoutingModule
   ],
-  declarations: [RegisterPage]
+  declarations: [AddAdPage]
 })
-export class RegisterPageModule { }
+export class AddAdPageModule { }

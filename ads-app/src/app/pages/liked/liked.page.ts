@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AdsService } from '../shared/services/ads.service';
-import { AuthService } from '../shared/services/auth.service';
 import { of, switchMap } from 'rxjs';
-import { Ad } from '../models/ad.model';
-import { User } from '../models/user.model';
-import { UserService } from '../shared/services/user.service';
+import { Ad } from 'src/app/models/ad.model';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-liked',
@@ -14,7 +13,8 @@ import { UserService } from '../shared/services/user.service';
 export class LikedPage implements OnInit {
 
 
-  constructor(private _user: UserService,
+  constructor(
+    private _user: UserService,
     private _auth: AuthService) {
     this._auth.getUserFromLS()
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../models/category.model';
-import { AdsService } from '../shared/services/ads.service';
-import { User } from '../models/user.model';
-import { AuthService } from '../shared/services/auth.service';
-import { CategoryService } from '../shared/services/category.service';
+import { Category } from 'src/app/models/category.model';
+import { User } from 'src/app/models/user.model';
+import { AdsService } from 'src/app/shared/services/ads.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { CategoryService } from 'src/app/shared/services/category.service';
 
 @Component({
   selector: 'app-add-ad',

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/services/user.service';
-import { AuthService } from '../shared/services/auth.service';
+
 import { switchMap, tap } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-profile',

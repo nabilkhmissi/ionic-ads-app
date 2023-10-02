@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { AdDetailsPageRoutingModule } from './ad-details-routing.module';
 
 import { AdDetailsPage } from './ad-details.page';
-import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [

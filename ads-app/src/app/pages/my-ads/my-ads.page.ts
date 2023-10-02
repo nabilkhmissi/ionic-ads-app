@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AdsService } from '../shared/services/ads.service';
-import { AuthService } from '../shared/services/auth.service';
-import { User } from '../models/user.model';
-import { Ad } from '../models/ad.model';
+import { Ad } from 'src/app/models/ad.model';
+import { User } from 'src/app/models/user.model';
+import { AdsService } from 'src/app/shared/services/ads.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+
 
 @Component({
   selector: 'app-my-ads',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared/services/auth.service';
 import { tap } from 'rxjs';
-import { AdsService } from '../shared/services/ads.service';
 import { Router } from '@angular/router';
+import { AdsService } from 'src/app/shared/services/ads.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-home',

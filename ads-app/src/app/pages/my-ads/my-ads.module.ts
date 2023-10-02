@@ -4,23 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { MyAdsPageRoutingModule } from './my-ads-routing.module';
 
-import { HomePage } from './home.page';
-import { SharedModule } from '../shared/shared.module';
+import { MyAdsPage } from './my-ads.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
+    MyAdsPageRoutingModule,
     SharedModule
   ],
-  declarations: [
-    HomePage
-  ],
-  providers: [
-  ]
+  declarations: [MyAdsPage]
 })
-export class HomePageModule { }
+export class MyAdsPageModule { }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, tap } from 'rxjs';
-import { AlertService } from '../shared/services/alert.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,12 @@ import { AlertService } from '../shared/services/alert.service';
 })
 export class LoginPage implements OnInit {
 
-  constructor(private _auth: AuthService, private _router: Router, private _activatedRoute: ActivatedRoute, private _alert: AlertService) { }
+  constructor(
+    private _auth: AuthService,
+    private _router: Router,
+    private _activatedRoute: ActivatedRoute,
+    private _alert: AlertService
+  ) { }
 
 
   email: string = "";

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { LoadingService } from '../shared/services/loading.service';
-import { Ad } from '../models/ad.model';
-import { AdsService } from '../shared/services/ads.service';
-import { AuthService } from '../shared/services/auth.service';
 import { EMPTY, switchMap } from 'rxjs';
-import { AlertService } from '../shared/services/alert.service';
-import { UserService } from '../shared/services/user.service';
+import { Ad } from 'src/app/models/ad.model';
+import { AdsService } from 'src/app/shared/services/ads.service';
+import { AlertService } from 'src/app/shared/services/alert.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { LoadingService } from 'src/app/shared/services/loading.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-ad-details',
@@ -17,7 +17,6 @@ export class AdDetailsPage implements OnInit {
 
   constructor(
     private _details: AdsService,
-    private _ad: AdsService,
     private _activatedRoute: ActivatedRoute,
     private _loading: LoadingService,
     private _auth: AuthService,
