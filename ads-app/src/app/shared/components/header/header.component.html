@@ -1,11 +1,4 @@
-<ion-header id="main-content">
-  <ion-toolbar>
-    <ion-buttons slot="start" *ngIf="backButton">
-      <ion-back-button defaultHref></ion-back-button>
-    </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-menu-button menu="main-menu"></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ title }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="header">
+  <h1>{{ title }}</h1>
+  <ion-icon name="exit-outline" size="large" color="light" (click)="logout()" *ngIf="logoutBtn"></ion-icon>
+</div>

@@ -1,20 +1,24 @@
 <ion-card style="position: relative;height: 100%;">
   <ion-img [src]="ad.image ? ad.image :'../../../../assets/image_placeholder.jpg'" [alt]="ad.title"></ion-img>
-  <div style="display: flex;flex-direction: column;justify-content: space-between;">
+  <div class="card-content">
     <div>
       <ion-card-header (click)="goToDetails(ad._id)">
         <ion-card-title style="font-size: 18px;">{{ad.title}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        1400 TND
+        <div>
+          {{ ad.price }} TND
+        </div>
+        <div class="location">
+          <ion-icon name="location-outline"></ion-icon>
+          {{ ad.location ?? 'Tunis' }}
+        </div>
       </ion-card-content>
-      <div (click)=" doLike()" *ngIf="authUser$|async" class="card-btn">
+
+      <div (click)=" addFavorite()" *ngIf="authUser$|async" class="card-btn">
         <ion-icon name="heart-outline"></ion-icon>
       </div>
-    </div>
-    <div class="location">
-      <ion-icon name="location-outline"></ion-icon>
-      Tunis, Tunisia
+      
     </div>
   </div>
 </ion-card>

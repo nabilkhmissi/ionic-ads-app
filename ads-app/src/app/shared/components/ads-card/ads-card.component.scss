@@ -7,6 +7,15 @@ ion-card {
 
     ion-card-content {
         padding: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .card-btn {
@@ -28,7 +37,7 @@ ion-card {
     .location {
         display: flex;
         gap: 0.5rem;
-        padding: 1rem;
+        padding: 1rem 0;
         align-items: center;
     }
 }

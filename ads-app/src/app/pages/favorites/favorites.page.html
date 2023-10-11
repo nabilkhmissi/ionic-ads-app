@@ -1,0 +1,7 @@
+<ion-content>
+  <app-header title="Favorites"></app-header>
+  <div class="page-content">
+    <app-spinner *ngIf="loading$ | async"></app-spinner>
+    <app-ads-cards [ads]="likes"></app-ads-cards>
+  </div>
+</ion-content>

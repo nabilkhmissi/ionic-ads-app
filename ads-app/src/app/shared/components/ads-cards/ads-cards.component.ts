@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AdsService } from '../../services/ads.service';
 import { Ad } from 'src/app/models/ad.model';
 
 @Component({

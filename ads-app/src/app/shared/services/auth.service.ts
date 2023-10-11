@@ -42,7 +42,8 @@ export class AuthService {
         this._loading.showLoading()
         return this._http.post<AuthResponse>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
             tap(response => {
-                this.doLogin(response.user)
+                this.setAuthUser(response.user)
+                this.saveUserToLS(response.user)
                 this._router.navigate(['']).then(
                     () => window.location.reload()
                 )
@@ -70,12 +71,6 @@ export class AuthService {
                 return EMPTY
             })
         )
-    }
-
-
-    doLogin(user: User) {
-        this.setAuthUser(user)
-        this.saveUserToLS(user)
     }
 
     saveUserToLS(user: User) {

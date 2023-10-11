@@ -1,22 +1,18 @@
-<app-header title="Profile"></app-header>
-
 <ion-content>
-
-    <ion-list *ngIf="user" [inset]="true">
-        <ion-item>
-            <ion-input label="Name" label-placement="floating" placeholder="Enter name" name="name"
-                [(ngModel)]="user.name"  [value]="user.name"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input label="Email" [disabled]="true" label-placement="floating" placeholder="Enter email" name="email"
-                [(ngModel)]="user.email"></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-input label="Phone" label-placement="floating" placeholder="Enter phone" name="phone"
-                [(ngModel)]="user.phone" [value]="user.phone"></ion-input>
-        </ion-item>
-        <ion-button expand="block" style="margin-top: 1rem;" (click)="updateDetails()">Change details</ion-button>
-
-
-    </ion-list>
+  <app-header title="Profile"></app-header>
+  <div class="page-content">
+    <ion-item>
+      <ion-input label="Name" label-placement="floating" placeholder="Enter name" name="name" [(ngModel)]="user.name"
+        [value]="user.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Email" [disabled]="true" label-placement="floating" placeholder="Enter email" name="email"
+        [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Phone" label-placement="floating" placeholder="Enter phone" name="phone"
+        [(ngModel)]="user.phone" [value]="user.phone"></ion-input>
+    </ion-item>
+    <ion-button expand="block" style="margin-top: 1rem;" (click)="updateDetails()">Change details</ion-button>
+  </div>
 </ion-content>

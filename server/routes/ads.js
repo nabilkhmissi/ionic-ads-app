@@ -1,88 +1,36 @@
 const express = require("express")
-const Ad = require("../models/ad.model")
-const User = require("../models/user.model")
+const { AdModel, UserModel } = require("../models")
 
 const router = express.Router();
 
-
-router.get("/search", async (req, res) => {
-
-    const { title } = req.query;
-
-    let ads = null;
-    if (title) {
-        ads = await Ad.find({ title: { $regex: title } });
-    } else {
-        ads = await Ad.find({});
-    }
-
-    res.status(200).send({
-        data: ads
-    })
-})
-
+//find all
 router.get("", async (req, res) => {
 
-    const ads = await Ad.find({}).populate('user category');
-
-    res.status(200).send({
-        data: ads
-    })
+    const { category } = req.query
+    let ads;
+    if (category) {
+        ads = await AdModel.find({ category: category }).populate("user");
+    } else {
+        ads = await AdModel.find({}).populate("user");
+    }
+    res.status(200).send({ data: ads })
 })
 
+//find ad by id
 router.get("/:id", async (req, res) => {
 
     const id = req.params.id;
-
-    const ad = await Ad.findOne({ _id: id }).populate('user category');
-
-    res.status(200).send({
-        data: ad
-    })
+    const ad = await AdModel.findById(id).populate("user");
+    res.status(200).send({ data: ad })
 })
 
-router.get("/user/:id", async (req, res) => {
-
-    const userId = req.params.id;
-    const ads = await Ad.find({ user: userId });
-    res.status(200).send({
-        data: ads
-    })
-})
-
-router.get("/category/:id", async (req, res) => {
-
-    const catId = req.params.id;
-
-    const ads = await Ad.find({ categoryId: catId });
-
-    res.status(200).send({
-        data: ads
-    })
-})
-
-
-
-router.get("/user/:userId/category/:catId", async (req, res) => {
-
-    const { catId, userId } = req.params.id;
-    console.log(catId, userId)
-
-    const ads = await Ad.find({ userId: userId, categoryId: catId });
-
-    res.status(200).send({
-        data: ads
-    })
-})
-
-
-
+//update ad
 router.put("/:id", async (req, res) => {
 
     const oldAd = req.body;
     const adId = req.params.id;
 
-    let ad = await Ad.find({ _id: adId });
+    let ad = await AdModel.find({ _id: adId });
 
     if (!ad) {
         res.status(500).send({
@@ -90,7 +38,7 @@ router.put("/:id", async (req, res) => {
         })
     }
 
-    await Ad.findOneAndUpdate(
+    await AdModel.findOneAndUpdate(
         { _id: adId },
         { $set: oldAd }
     )
@@ -101,55 +49,60 @@ router.put("/:id", async (req, res) => {
 })
 
 
-
+//create new ad
 router.post("", async (req, res) => {
-    const { title, description, userId, categoryId, image } = req.body;
+    const { title, description, user, price, category, image } = req.body;
 
     if (!title || !description) {
         res.status(500).send({ message: "please provide title and description !" });
         return;
     }
 
-    const user = User.findOne({ _id: userId });
-
-    if (!user) {
-        res.status(500).send({ message: "user not found" })
-    }
-
-
-    await new Ad({
+    const new_ad = await new AdModel({
         title: title,
         description: description,
         image: image,
-        user: userId,
-        category: categoryId
+        user: user,
+        price: price,
+        category: category
     }).save();
 
     res.send({
         status: 200,
+        data: new_ad,
         message: "ad created successfully "
     })
 })
 
-
+//delete by id
 router.delete("/:id", async (req, res) => {
 
-    const { id } = req.params.id;
+    const id = req.params.id;
 
-    const ad = await Ad.find({ _id: id });
-
+    const ad = await AdModel.find({ _id: id });
 
     if (!ad) {
-        res.status(500).send({
-            message: "ad with this id not found"
+        return res.status(500).send({
+            message: "Ad with this id not found"
         })
-        return;
     }
 
-    res.send({
-        status: 200,
-        data: ads
+    await AdModel.deleteOne({ _id: id });
+
+    return res.send({
+        status: 200, message: "Ad delete successfully"
     })
+})
+
+//get ads by user id
+router.get("/user/:id", async (req, res) => {
+    const id = req.params.id;
+    const user = await UserModel.findById(id);
+    if (!user) {
+        return res.status(404).send({ message: "user with this not found" })
+    }
+    const ads = await AdModel.find({ user: id });
+    return res.status(200).send({ data: ads })
 })
 
 module.exports = router

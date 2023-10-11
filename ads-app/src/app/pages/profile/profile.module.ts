@@ -14,9 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    ProfilePageRoutingModule,
-    SharedModule
+    SharedModule,
+    ProfilePageRoutingModule
   ],
   declarations: [ProfilePage]
 })
-export class ProfilePageModule { }
+export class ProfilePageModule {}

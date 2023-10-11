@@ -1,25 +1,23 @@
-<ion-content style="position: relative">
+<ion-content>
+  <app-header title="Login"></app-header>
+  <div class="page-content">
+    <div class="form">
+      <ion-list inset="true" lines="none">
+        <ion-item lines="none">
+          <h1 style="margin: 0;">Login</h1>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input label="Email" label-placement="floating" placeholder="Enter email" name="email"
+            [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input label="Password" label-placement="floating" placeholder="Enter password" name="password"
+            [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-button expand="block" style="margin-top: 1rem;" (click)="doLogin()">Login</ion-button>
+        <ion-button expand="block" color="light" style="margin-top: 1rem;" (click)="doRegister()">Register</ion-button>
+      </ion-list>
+    </div>
+  </div>
 
-  <div class="header">
-    <ion-back-button text="" icon="arrow-back-outline" color="light" defaultHref></ion-back-button>
-  </div>
-  <div class="form">
-    <ion-list inset="true" lines="none">
-      <ion-item lines="none">
-        <h1 class="text-bold">Login</h1>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-input label="Email" label-placement="floating" placeholder="Enter email" name="email"
-          [(ngModel)]="email"></ion-input>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-input label="Password" label-placement="floating" placeholder="Enter password" name="password"
-          [(ngModel)]="password"></ion-input>
-      </ion-item>
-      <ion-button expand="block" style="margin-top: 1rem;" (click)="doLogin()">Login</ion-button>
-      <ion-button expand="block" color="light" style="margin-top: 1rem;" (click)="doRegister()">Register</ion-button>
-    </ion-list>
-  </div>
-  <div class="bg-div">
-  </div>
 </ion-content>

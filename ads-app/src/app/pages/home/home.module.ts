@@ -14,13 +14,9 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule,
-    SharedModule
+    SharedModule,
+    HomePageRoutingModule
   ],
-  declarations: [
-    HomePage
-  ],
-  providers: [
-  ]
+  declarations: [HomePage]
 })
 export class HomePageModule { }

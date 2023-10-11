@@ -10,13 +10,13 @@ import { AlertService } from './services/alert.service';
 import { AuthService } from './services/auth.service';
 import { AdsService } from './services/ads.service';
 import { SelectComponent } from './components/select/select.component';
-import { CategoryService } from './services/category.service';
 import { AdsCardsComponent } from './components/ads-cards/ads-cards.component';
 import { UserService } from './services/user.service';
 import { NoContentComponent } from './components/no-content/no-content.component';
 import { ToastService } from './services/toast.service';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { HeaderBackComponent } from './components/header-back/header-back.component';
+import { TabsComponent } from './components/tabs/tabs.component';
 
 
 
@@ -29,7 +29,8 @@ import { HeaderBackComponent } from './components/header-back/header-back.compon
     AdsCardsComponent,
     NoContentComponent,
     SpinnerComponent,
-    HeaderBackComponent
+    HeaderBackComponent,
+    TabsComponent
   ],
   imports: [
     CommonModule,
@@ -44,14 +45,14 @@ import { HeaderBackComponent } from './components/header-back/header-back.compon
     AdsCardsComponent,
     NoContentComponent,
     SpinnerComponent,
-    HeaderBackComponent
+    HeaderBackComponent,
+    TabsComponent,
   ],
   providers: [
     LoadingService,
     AlertService,
     AuthService,
     AdsService,
-    CategoryService,
     UserService,
     ToastService,
   ]

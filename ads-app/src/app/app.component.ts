@@ -9,16 +9,6 @@ export class AppComponent implements OnInit {
   constructor(private _auth: AuthService) {
     _auth.getUserFromLS()
   }
-
-  authUser$ = this._auth.authenticatedUser$
-
-
-  ngOnInit(): void { }
-  logout() {
-    this._auth.logout()
-  }
-
-  handleClick() {
-    console.log("aa")
+  ngOnInit(): void {
   }
 }
