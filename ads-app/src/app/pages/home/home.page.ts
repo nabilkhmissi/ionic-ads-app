@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { tap } from 'rxjs';
-import { Router } from '@angular/router';
 import { AdsService } from 'src/app/shared/services/ads.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoadingService } from 'src/app/shared/services/loading.service';
@@ -12,40 +12,32 @@ import { LoadingService } from 'src/app/shared/services/loading.service';
 })
 export class HomePage implements OnInit {
 
-  empty = false;
-  keyword = "";
-
   constructor(private _ads: AdsService,
-    private _auth: AuthService,
+    private _loading: LoadingService,
+    private _activatedRoute: ActivatedRoute,
     private _router: Router,
-    private _loading: LoadingService) {
-    _auth.getUserFromLS()
+    private _auth: AuthService
+  ) {
+    this._ads.initAds();
+    _auth.getUserFromLS();
   }
-
-  searchbar = false;
-
   loading$ = this._loading.loading$;
-
-  ads$ = this._ads.filteredAds$.pipe(
-    tap(res => {
-      this.empty = res.length === 0 ? true : false
-    })
-  );
+  ads$ = this._ads.ads$;
   authUser$ = this._auth.authenticatedUser$;
+
+
+
   ngOnInit() {
-
+    this._activatedRoute.queryParamMap.pipe(
+      tap(queryParams => {
+        let query = queryParams.get('category')
+        if (query) {
+          this._ads.findByCategory(query)
+        }
+      })
+    ).subscribe()
   }
-
-  doSearch() {
-    this.keyword = "";
-    this.searchbar = !this.searchbar
-  }
-
-  handleSearch(e: any) {
-    this._ads.searchSubject.next(e.target.value)
-  }
-
-  goToAdd() {
-    this._router.navigateByUrl("/add-ad")
+  create() {
+    this._router.navigateByUrl("create")
   }
 }

@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegisterPageRoutingModule } from './register-routing.module';
+import { FavoritesPageRoutingModule } from './favorites-routing.module';
 
-import { RegisterPage } from './register.page';
+import { FavoritesPage } from './favorites.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
@@ -15,8 +15,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     IonicModule,
     SharedModule,
-    RegisterPageRoutingModule
+    FavoritesPageRoutingModule
   ],
-  declarations: [RegisterPage]
+  declarations: [FavoritesPage]
 })
-export class RegisterPageModule { }
+export class FavoritesPageModule { }

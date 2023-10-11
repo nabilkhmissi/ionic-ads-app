@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { switchMap, tap } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -18,12 +17,12 @@ export class ProfilePage implements OnInit {
     _auth.getUserFromLS()
   }
 
-  user: User | null = null
+  user!: User;
 
   ngOnInit() {
     this._auth.authenticatedUser$.subscribe(
       user => {
-        this.user = user
+        this.user = user!
       }
     )
   }

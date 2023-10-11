@@ -1,14 +1,7 @@
 require("./db/connect")
 const authRouter = require("./routes/auth")
 const adsRouter = require("./routes/ads")
-const categoriesRouter = require("./routes/categories")
 const userRouter = require("./routes/user")
-
-const { categories } = require("./data")
-
-const User = require("./models/user.model")
-const Category = require("./models/category.model")
-const Ad = require("./models/ad.model")
 
 const express = require("express")
 const cors = require("cors")
@@ -20,18 +13,11 @@ app.use(express.json())
 
 app.use("/api/v1/auth", authRouter)
 app.use("/api/v1/ads", adsRouter)
-app.use("/api/v1/categories", categoriesRouter)
 app.use("/api/v1/user", userRouter)
 
 
 async function initDB() {
 
-    categories.forEach(async (element) => {
-        console.log(element)
-        await new Category({
-            title: element.title
-        }).save()
-    });
     /*   await Ad.deleteMany({})
       await Category.deleteMany({})
       await User.deleteMany({}) */

@@ -18,14 +18,16 @@ export class AdsCardComponent implements OnInit {
     private _notification: AlertService,
     private _auth: AuthService,
     private _router: Router,
-    private _user: UserService) { }
+    private _user: UserService) {
+    this._auth.getUserFromLS()
+  }
 
   authUser$ = this._auth.authenticatedUser$
 
   ngOnInit() {
   }
 
-  doLike() {
+  addFavorite() {
     this._auth.authenticatedUser$.pipe(
       switchMap(user => {
         this.liked = !this.liked

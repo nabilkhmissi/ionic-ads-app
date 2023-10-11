@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.page.html',
-  styleUrls: ['./register.page.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
-export class RegisterPage implements OnInit {
+export class SignupPage implements OnInit {
 
   constructor(private _auth: AuthService,
     private _router: Router) { }
@@ -19,7 +19,6 @@ export class RegisterPage implements OnInit {
 
   ngOnInit() {
   }
-
 
   register() {
     this._auth.register(this.email, this.password, this.name, this.phone).subscribe()

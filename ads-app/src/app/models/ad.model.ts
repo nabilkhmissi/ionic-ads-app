@@ -8,5 +8,7 @@ export interface Ad {
     image: string;
     price: number;
     user?: User;
+    liked?: boolean,
+    location: string;
     category?: Category
 }

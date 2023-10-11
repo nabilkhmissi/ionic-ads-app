@@ -16,27 +16,13 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   @Input() title = "Home"
-  @Input() backButton = false;
+  @Input() logoutBtn = false;
 
   authUser$ = this._auth.authenticatedUser$;
 
   ngOnInit() {
 
   }
-
-
-  navigate(path: string) {
-    this._router.navigate([path])
-  }
-
-  goToLogin() {
-    this._router.navigate(["login"])
-  }
-
-  goToProfile() {
-    this._router.navigate(["/profile"])
-  }
-
   logout() {
     this._auth.logout()
   }

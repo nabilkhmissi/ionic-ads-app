@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/category.model';
 import { User } from 'src/app/models/user.model';
 import { AdsService } from 'src/app/shared/services/ads.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { CategoryService } from 'src/app/shared/services/category.service';
 
 @Component({
   selector: 'app-add-ad',
@@ -12,42 +10,60 @@ import { CategoryService } from 'src/app/shared/services/category.service';
 })
 export class AddAdPage implements OnInit {
 
-  constructor(private _ad: AdsService,
-    private _auth: AuthService,
-    private _cats: CategoryService) {
-    this._auth.getUserFromLS()
+  constructor(private _auth: AuthService,
+    private _ad: AdsService) {
+    _auth.getUserFromLS();
   }
 
   title: string = ""
   description: string = ""
   image: string = ""
   price: number = 0
-  category: Category | null = null;
   user: User | null = null;
+  category = "";
+  location = "";
 
-
-  categories$ = this._cats.findAll();
+  categories = [
+    { path: "/", icon: "car-outline", title: "Cars" },
+    { path: "/", icon: "bicycle-outline", title: "Bikes" },
+    { path: "/", icon: "phone-portrait-outline", title: "Electronics" },
+    { path: "/", icon: "home-outline", title: "Properties" },
+    { path: "/", icon: "shirt-outline", title: "Clothes" },
+    { path: "/", icon: "umbrella-outline", title: "Gadgets" },
+    { path: "/", icon: "bed-outline", title: "Fourniture" },
+    { path: "/", icon: "briefcase-outline", title: "Jobs" },
+    { path: "/", icon: "book-outline", title: "Books" },
+    { path: "/", icon: "paw-outline", title: "Animals" },
+    { path: "/", icon: "cut-outline", title: "Crafts" },
+    { path: "/", icon: "tv-outline", title: "Computers" },
+    { path: "/", icon: "film-outline", title: "Entertain" },
+    { path: "/", icon: "brush-outline", title: "Art" },
+    { path: "/", icon: "shapes-outline", title: "Decoration" },
+  ]
 
   ngOnInit() {
     this._auth.authenticatedUser$.subscribe(
-      auth => this.user = auth
+      auth => {
+        this.user = auth
+      }
     )
   }
-
 
   addAd() {
     const ad = {
       title: this.title,
       description: this.description,
-      categoryId: this.category?._id,
+      category: this.category,
+      location: this.location,
       image: this.image,
       price: this.price,
-      userId: this.user?._id
+      user: this.user?._id
     };
     this._ad.addAd(ad).subscribe();
   }
 
-  handleCategoryChange(e: Category) {
-    this.category = e
+  handleCategoryChange(e: any) {
+    this.category = e.title
   }
+
 }

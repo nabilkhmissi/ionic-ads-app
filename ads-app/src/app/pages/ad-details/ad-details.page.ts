@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { EMPTY, switchMap } from 'rxjs';
 import { Ad } from 'src/app/models/ad.model';
 import { AdsService } from 'src/app/shared/services/ads.service';
@@ -26,11 +26,10 @@ export class AdDetailsPage implements OnInit {
     _auth.getUserFromLS()
   }
 
-
   ad!: Ad;
   liked = false;
-
   loading$ = this._loading.loading$;
+
   ngOnInit() {
     this._loading.showLoading();
     const id = this._activatedRoute.snapshot.paramMap.get("id")
@@ -55,6 +54,5 @@ export class AdDetailsPage implements OnInit {
       })
     ).subscribe()
   }
-
 
 }

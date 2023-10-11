@@ -1,24 +1,26 @@
-const User = require("../models/user.model")
+const { UserModel, AdModel } = require("../models")
 const router = require("express").Router()
 
 
+//add like
+router.post("/likes", async (req, res) => {
+    const { userId, postId } = req.body;
 
-router.post("/:id/likes", async (req, res) => {
-
-    const { id } = req.params;
-    const { _id } = req.body;
-
-    const user = await User.findOne({ _id: id });
+    const user = await UserModel.findById(userId).populate("likes");
 
     if (!user) {
-        res.status(500).send({ message: "user not found" })
-        return;
+        return res.status(500).send({ message: "user not found" })
     }
 
-    if (user.likes.includes(_id)) {
-        user.likes = user.likes.filter(item => item._id === _id)
-    } else {
-        user.likes.push(_id);
+    let exist = false;
+    user.likes.map(e => {
+        if (e._id.toString() === postId) {
+            user.likes.splice(user.likes.indexOf(e), 1)
+            exist = true;
+        };
+    })
+    if (!exist) {
+        user.likes.push(postId);
     }
 
     user.save();
@@ -27,46 +29,37 @@ router.post("/:id/likes", async (req, res) => {
 
 })
 
+//find users likes
 router.get("/:id/likes", async (req, res) => {
     const id = req.params.id;
-    const user = await User.findOne({ _id: id }).select('likes').populate([
-        { path: 'likes', populate: { path: 'category' } },
-        { path: 'likes', populate: { path: 'user' } }
-    ]);
-    const likes = user.likes.map(e => ({
-        _id: e._id,
-        title: e.title,
-        description: e.description,
-        image: e.image,
-        category: e.category.title,
-        user: {
-            name: e.user.name
-        }
-    }));
+    const user = await UserModel.findById(id).populate("likes");
 
-    res.status(200).send({ data: likes })
+    const likes = user.likes;
+    likes.forEach(e => e.liked = true);
+    return res.status(200).send({ data: likes })
 })
 
+//get user by id
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
-    const user = await User.findOne({ _id: id });
-
-    res.status(200).send({ data: user })
+    const user = await UserModel.findOne({ _id: id });
+    return res.status(200).send({ data: user })
 })
 
 
+//update phone and name
 router.post("/:id", async (req, res) => {
     const id = req.params.id;
     const { phone, name } = req.body;
 
-    const user = await User.findOne({ _id: id });
+    const user = await UserModel.findOne({ _id: id });
 
     user.phone = phone;
     user.name = name;
 
     const updatedUser = await user.save()
 
-    res.status(200).send({ data: { email: updatedUser.email, name: updatedUser.name, _id: updatedUser._id, phone: updatedUser.phone } })
+    return res.status(200).send({ data: { email: updatedUser.email, name: updatedUser.name, _id: updatedUser._id, phone: updatedUser.phone } })
 })
 
 

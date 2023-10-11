@@ -1,5 +1,5 @@
 const express = require("express")
-const User = require("../models/user.model")
+const { UserModel } = require("../models")
 
 const router = express.Router();
 
@@ -10,7 +10,7 @@ router.post("/login", async (req, res) => {
         res.status(500).send({ message: "invalid credentials !" });
         return;
     }
-    const authUser = await User.findOne({ email: email });
+    const authUser = await UserModel.findOne({ email: email });
 
     if (!authUser) {
         res.status(500).send({ message: "user doesnt exist" });
@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
         res.status(500).send({ message: "please fill all fiealds !" });
         return;
     }
-    await new User({
+    await new UserModel({
         name: name,
         email: email,
         password: password,

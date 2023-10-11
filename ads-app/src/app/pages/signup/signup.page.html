@@ -1,0 +1,27 @@
+<ion-content>
+  <app-header title="Signup"></app-header>
+  <div class="page-content">
+    <div class="form">
+      <ion-list inset="true">
+        <ion-item lines="none">
+          <h1 style="margin: 0;">Register</h1>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input label="Name" label-placement="floating" name="name" [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input label="Email" label-placement="floating" name="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input label="Password" label-placement="floating" name="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input label="Phone" label-placement="floating" name="phone" [(ngModel)]="phone"></ion-input>
+        </ion-item>
+        <ion-button expand="block" style="margin-top: 1rem;" (click)="register()">Register</ion-button>
+        <ion-button expand="block" color="light" style="margin-top: 1rem;" (click)="login()">Login</ion-button>
+      </ion-list>
+    </div>
+  </div>
+
+</ion-content>

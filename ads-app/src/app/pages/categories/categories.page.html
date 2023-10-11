@@ -1,107 +1,16 @@
 <ion-content>
-  <app-header-back title="Categories"></app-header-back>
-  <div class="page-wrapper">
+  <app-header title="Categories"></app-header>
+  <div class="page-content">
     <ion-grid>
       <ion-row>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="car" size="large"></ion-icon>
-            Cars
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="bicycle" size="large"></ion-icon>
-            Bikes
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="phone-portrait-outline" size="large"></ion-icon>
-            Electronics
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="home-outline" size="large"></ion-icon>
-            Properties
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="shirt-outline" size="large"></ion-icon>
-            Clothes
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="umbrella-outline" size="large"></ion-icon>
-            Gadgets
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="bed-outline" size="large"></ion-icon>
-            Fourniture
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="briefcase-outline" size="large"></ion-icon>
-            Jobs
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="book-outline" size="large"></ion-icon>
-            Books
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="paw-outline" size="large" color="red"></ion-icon>
-            Animals
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="cut-outline" size="large"></ion-icon>
-            Crafts
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="tv-outline" size="large"></ion-icon>
-            Computers
-          </div>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="film-outline" size="large"></ion-icon>
-            Entertain.
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="brush-outline" size="large"></ion-icon>
-            Art
-          </div>
-        </ion-col>
-        <ion-col>
-          <div class="cat-card">
-            <ion-icon name="shapes-outline" size="large"></ion-icon>
-            Decoration
+        <ion-col *ngFor="let c of cats" size="4">
+          <div class="cat-card" [routerLink]="['']" [queryParams]="{ category : c.title }">
+            <ion-icon [name]="c.icon" size="large"></ion-icon>
+            {{c.title}}
           </div>
         </ion-col>
       </ion-row>
     </ion-grid>
   </div>
+
 </ion-content>

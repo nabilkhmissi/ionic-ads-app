@@ -19,21 +19,14 @@ export class UserService {
 
     readonly baseUrl = "http://localhost:3000/api/v1/user";
 
-    addToLikes(ad: Ad) {
-        this._loading.showLoading();
+    addToLikes(ad: any) {
         return this._auth.authenticatedUser$.pipe(
             switchMap(user => {
-                if (user) {
-                    return this._http.post(`${this.baseUrl}/${user._id}/likes`, { _id: ad._id }).pipe(
-                        tap(resp => {
-                            this._loading.hideLoading()
-                        })
-                    )
-                }
-                return EMPTY;
+                let req = { userId: user!._id, postId: ad._id };
+                console.log(req)
+                return this._http.post(`${this.baseUrl}/likes`, req)
             }),
             catchError(error => {
-                this._loading.hideLoading();
                 this._alert.showNotification(error.error.message);
                 return EMPTY
             })
